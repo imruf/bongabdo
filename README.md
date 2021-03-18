@@ -6,11 +6,14 @@ Usage:
 ------
 cd into directory
 
-    Bangla date today:
+# Bangla date today:
+
 ```
 sh bn_cal
 ```
-    Bangla date on a given date eg. 21 Feb 1952
+
+# Bangla date on a given date eg. 21 Feb 1952
+    
 ```
 sh bn_cal -d 21 -m 2 -y 1952
 ```
