@@ -4,10 +4,9 @@ Bangla Calendar
 
 Installation and Usage:
 ------
-git clone https://github.com/imrufbd/bangla-calendar.git
+'git clone https://github.com/imrufbd/bangla-calendar.git'
 
-cd into directory
-chmod 755 bn_cal.sh
+### cd into directory and give permission
 
 #### help:
 ```
