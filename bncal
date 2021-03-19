@@ -21,8 +21,8 @@ esac done
 [ -z $dt_f ] && dt_f="0"
 
 lp_y=$(( $en_y % 4 ))
-#en_d=$(date +%u)
 en_d=$(date --date=$en_y-$en_m-$en_dt +%u)
+# en_d=$(date +%u)
 
 bar() {
     if [ $en_d -eq 1 ]; then
