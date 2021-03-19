@@ -2,7 +2,7 @@
 
 #  Credit To https://www.shawonruet.com/2016/03/english-to-bangla-date-converter-c.html
 # According to Bangla Academy 2019 revision Boishakh-Aashwin will be 31days, Kartik-Choitra ( except Falgun ) will be 30days, Falgun will be 29days(30days in the leap year)
-# Bangla date count starts with the rising of the sun. So date is corrected to change at 6 in morning with GMT. If date doesn't change accordingly uncomment line 12  and comment 13.
+# Bangla date count starts with the rising of the sun. So date is corrected to change at 6 in morning with GMT. If date doesn't change accordingly uncomment line 17  and comment 18.
 
 
 while getopts ":d:m:y:f:h" o; do case "${o}" in
