@@ -1,6 +1,6 @@
 Bangla Calendar
 ---------------
-    A tool to convert Gregorian calendar into Bongabdo in Linux Shell
+    A shell script convert Gregorian calendar into Bongabdo
 
 Installation and Usage:
 ------
@@ -10,17 +10,17 @@ Installation and Usage:
 
 #### help:
 ```
-bn_cal.sh -h
+bncal -h
 ```
 
 #### Bangla date today:
 ```
-bn_cal.sh
+bncal
 ```
 
 #### Bangla date on a given date eg. 21 Feb 1952
 ```
-bn_cal.sh -d 21 -m 2 -y 1952
+bncal -d 21 -m 2 -y 1952
 ```
 
-or put bn_cal.sh in your path
+or put bncal in your path
