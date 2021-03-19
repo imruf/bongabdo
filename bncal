@@ -6,7 +6,7 @@
 
 
 while getopts ":d:m:y:f:h" o; do case "${o}" in
-	h) printf "Optional arguments for custom use:\\n  -d: Date\\n  -m: Month\\n  -y: Year\\n  -h: Show this help message\\n" && exit 1 ;;
+	h) printf "Optional arguments for custom use:\\n  -d: Date\\n  -m: Month\\n  -y: Year\\n -f: Date Format\\n -h: Show this help message\\n" && exit 1 ;;
 	d) en_dt=${OPTARG} ;;
 	m) en_m=${OPTARG} ;;
 	y) en_y=${OPTARG} ;;
@@ -21,7 +21,8 @@ esac done
 [ -z $dt_f ] && dt_f="0"
 
 lp_y=$(( $en_y % 4 ))
-en_d=$(date +%u)
+#en_d=$(date +%u)
+en_d=$(date --date=$en_y-$en_m-$en_dt +%u)
 
 bar() {
     if [ $en_d -eq 1 ]; then
