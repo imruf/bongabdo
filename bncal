@@ -24,36 +24,28 @@ lp_y=$(( $en_y % 4 ))
 en_d=$(date --date=$en_y-$en_m-$en_dt +%u)
 # en_d=$(date +%u)
 
-bar() {
-    if [ $en_d -eq 1 ]; then
-        bn_d="Som"
-    fi
+# text in bangla or bangreji/english
+# comment uncomment bday bmo bsn din and every line of bdate function for bangreji/english.
 
-    if [ $en_d -eq 2 ]; then
-        bn_d="Mongol"
-    fi
+declare -A bday
+bday=( [1]='সোম' [2]='মঙ্গল' [3]='বুধ' [4]='বৃহঃ' [5]='শুক্র' [6]='শনি' [7]='রবি' )
+# bday=( [1]='Som' [2]='Mongol' [3]='Budh' [4]='Briho' [5]='Shukro' [6]='Shoni' [7]='Robi' )
 
-    if [ $en_d -eq 3 ]; then
-        bn_d="Budh"
-    fi
+declare -A bdate
+bdate=( 
+[1]='১' [2]='২' [3]='৩' [4]='৪' [5]='৫' [6]='৬' [7]='৭' [8]='৮' [9]='৯' [10]='১০'
+[11]='১১' [12]='১২' [13]='১৩' [14]='১৪' [15]='১৫' [16]='১৬' [17]='১৭' [18]='১৮' [19]='১৯' [20]='২০'
+[21]='২১' [22]='২২' [23]='২৩' [24]='২৪' [25]='২৫' [26]='২৬' [27]='২৭' [28]='২৮' [29]='২৯' [30]='৩০' [31]='৩১'
+)
 
-    if [ $en_d -eq 4 ]; then
-        bn_d="Brihospoti"
-    fi
+declare -A bmo
+bmo=( [1]='বৈশাখ' [2]='জৈষ্ঠ্য' [3]='আষাঢ়' [4]='শ্রাবণ' [5]='ভাদ্র' [6]='আশ্বিন' [7]='কার্তিক' [8]='অগ্রাহায়ণ' [9]='পৌষ' [10]='মাঘ' [11]='ফাল্গুন' [12]='চৈত্র' )
+# bmo=( [1]='Boishakh' [2]='Jaistha' [3]='Aashar' [4]='Srabon' [5]='Vhadra' [6]='Aashwin' [7]='Kartik' [8]='Agrahayon' [9]='Poush' [10]='Magh' [11]='Falgun' [12]='Chaitra' )
 
-    if [ $en_d -eq 5 ]; then
-        bn_d="Shukro"
-    fi
+declare -A bsn
+bsn=( [1]='গ্রীষ্ম' [2]='বর্ষা' [3]='শরৎ' [4]='হেমন্ত' [5]='শীত' [6]='বসন্ত' )
+# bsn=( [1]='Grishsho' [2]='Borsha' [3]='Sharot' [4]='Hemanta' [5]='Sheet' [6]='Basanta' )
 
-    if [ $en_d -eq 6 ]; then
-        bn_d="Shoni"
-    fi
-
-    if [ $en_d -eq 7 ]; then
-        bn_d="Robi"
-    fi
-    printf "%s" $bn_d
-}
 
 bongabdo() {
     if [ $en_m -eq 4 ]; then
@@ -74,154 +66,132 @@ bongabdo() {
 tariq() {
     if [ $en_m -eq 4 ]; then
         if [ $en_dt -lt 14 ]; then
-            bn_mn=12
-            bn_m="Choitra"
-            bn_s="Bosonto"
+            bn_m=12
+            bn_s=6
             bn_dt=$(( $en_dt + 14 + 3 ))
         elif [ $en_dt -ge 14 ]; then
-            bn_mn=1
-            bn_m="Boishakh"
-            bn_s="Grishsho"
+            bn_m=1
+            bn_s=1
             bn_dt=$(( $en_dt - 14 + 1 ))
         fi
     fi
 
     if [ $en_m -eq 5 ]; then
         if [ $en_dt -lt 15 ]; then
-            bn_mn=1
-            bn_m="Boishakh"
-            bn_s="Grishsho"
+            bn_m=1
+            bn_s=1
             bn_dt=$(( $en_dt + 15 + 2 ))
         elif [ $en_dt -ge 15 ]; then
-            bn_mn=2
-            bn_m="Joistha"
-            bn_s="Grishsho"
+            bn_m=2
+            bn_s=1
             bn_dt=$(( $en_dt - 15 + 1 ))
         fi
     fi
 
     if [ $en_m -eq 6 ]; then
         if [ $en_dt -lt 15 ]; then
-            bn_mn=2
-            bn_m="Joistha"
-            bn_s="Grishsho"
+            bn_m=2
+            bn_s=1
             bn_dt=$(( $en_dt + 15 + 2 ))
         elif [ $en_dt -ge 15 ]; then
-            bn_mn=3
-            bn_m="Aashar"
-            bn_s="Borsha"
+            bn_m=3
+            bn_s=2
             bn_dt=$(( $en_dt - 15 + 1 ))
         fi
     fi
 
     if [ $en_m -eq 7 ]; then
         if [ $en_dt -lt 16 ]; then
-            bn_mn=3
-            bn_m="Aashar"
-            bn_s="Borsha"
+            bn_m=3
+            bn_s=2
             bn_dt=$(( $en_dt + 16 ))
         elif [ $en_dt -ge 16 ]; then
-            bn_mn=4
-            bn_m="Srabon"
-            bn_s="Borsha"
+            bn_m=4
+            bn_s=2
             bn_dt=$(( $en_dt - 16 + 1 ))
         fi
     fi
 
     if [ $en_m -eq 8 ]; then
         if [ $en_dt -lt 16 ]; then
-            bn_mn=4
-            bn_m="Srabon"
-            bn_s="Borsha"
+            bn_m=4
+            bn_s=2
             bn_dt=$(( $en_dt + 16 ))
         elif [ $en_dt -ge 16 ]; then
-            bn_mn=5
-            bn_m="Vadro"
-            bn_s="Sharot"
+            bn_m=5
+            bn_s=3
             bn_dt=$(( $en_dt - 16 + 1 ))
         fi
     fi
 
     if [ $en_m -eq 9 ]; then
         if [ $en_dt -lt 16 ]; then
-            bn_mn=5
-            bn_m="Vadro"
-            bn_s="Sharot"
+            bn_m=5
+            bn_s=3
             bn_dt=$(( $en_dt + 16 ))
         elif [ $en_dt -ge 16 ]; then
-            bn_mn=6
-            bn_m="Aashwin"
-            bn_s="Sharot"
+            bn_m=6
+            bn_s=3
             bn_dt=$(( $en_dt - 16 + 1 ))
         fi
     fi
 
     if [ $en_m -eq 10 ]; then
         if [ $en_dt -lt 17 ]; then
-            bn_mn=6
-            bn_m="Aashwin"
-            bn_s="Sharot"
+            bn_m=6
+            bn_s=3
             bn_dt=$(( $en_dt + 15 ))
         elif [ $en_dt -ge 17 ]; then
-            bn_mn=7
-            bn_m="Kartik"
-            bn_s="Hemanta"
+            bn_m=7
+            bn_s=4
             bn_dt=$(( $en_dt - 17 + 1 ))
         fi
     fi
 
     if [ $en_m -eq 11 ]; then
         if [ $en_dt -lt 16 ]; then
-            bn_mn=7
-            bn_m="Kartik"
-            bn_s="Hemanta"
+            bn_m=7
+            bn_s=4
             bn_dt=$(( $en_dt + 14 + 1 ))
         elif [ $en_dt -ge 16 ]; then
-            bn_mn=8
-            bn_m="Agrahayon"
-            bn_s="Hemanta"
+            bn_m=8
+            bn_s=4
             bn_dt=$(( $en_dt - 16 + 1 ))
         fi
     fi
 
     if [ $en_m -eq 12 ]; then
         if [ $en_dt -lt 16 ]; then
-            bn_mn=8
-            bn_m="Agrahayon"
-            bn_s="Hemanta"
+            bn_m=8
+            bn_s=4
             bn_dt=$(( $en_dt + 14 + 1 ))
         elif [ $en_dt -ge 15 ]; then
-            bn_mn=9
-            bn_m="Poush"
-            bn_s="Sheet"
+            bn_m=9
+            bn_s=5
             bn_dt=$(( $en_dt - 16 + 1 ))
         fi
     fi
 
     if [ $en_m -eq 1 ]; then
         if [ $en_dt -lt 15 ]; then
-            bn_mn=9
-            bn_m="Poush"
-            bn_s="Sheet"
+            bn_m=9
+            bn_s=5
             bn_dt=$(( $en_dt + 13 + 3 ))
         elif [ $en_dt -ge 15 ]; then
-            bn_mn=10
-            bn_m="Magh"
-            bn_s="Sheet"
+            bn_m=10
+            bn_s=5
             bn_dt=$(( $en_dt - 15 + 1 ))
         fi
     fi
 
     if [ $en_m -eq 2 ]; then
         if [ $en_dt -lt 14 ]; then
-            bn_mn=10
-            bn_m="Magh"
-            bn_s="Sheet"
+            bn_m=10
+            bn_s=5
             bn_dt=$(( $en_dt + 12 + 5 ))
         elif [ $en_dt -ge 14 ]; then
-            bn_mn=11
-            bn_m="Falgun"
-            bn_s="Bosonto"
+            bn_m=11
+            bn_s=6
             bn_dt=$(( $en_dt - 14 + 1 ))
         fi
     fi
@@ -229,34 +199,37 @@ tariq() {
     if [ $en_m -eq 3 ]; then
         if [ $en_dt -lt 15 ]; then
             if [ $lp_y -ne 0 ]; then
-                bn_mn=11
-                bn_m="Falgun"
-                bn_s="Bosonto"
+                bn_m=11
+                bn_s=6
                 bn_dt=$(( $en_dt + 15 ))
             else
-                bn_mn=11
-                bn_m="Falgun"
-                bn_s="Bosonto"
+                bn_m=11
+                bn_s=6
                 bn_dt=$(( $en_dt + 15 + 1 ))
             fi
         elif [ $en_dt -ge 15 ]; then
-            bn_mn=12
-            bn_m="Choitra"
-            bn_s="Bosonto"
+            bn_m=12
+            bn_s=6
             bn_dt=$(( $en_dt - 15 + 1 ))
         fi
     fi
 
+        bar=${bday[$en_d]}
+		din=${bdate[$bn_dt]}
+		# din=$bn_dt
+		mas=${bmo[$bn_m]}
+        hritu=${bsn[$bn_s]}
+
     if [ $dt_f -eq 1 ]; then
-         printf "%s %s %s" "$(bar)",$bn_dt $bn_m
+         printf "%s %s %s" $bar,$din $mas
     elif [ $dt_f -eq 2 ]; then
-        printf "%s %s %s %s" "$(bar)",$bn_dt $bn_m "$(bongabdo)"
+        printf "%s %s %s %s" $bar,$din $mas "$(bongabdo)"
     elif [ $dt_f -eq 3 ]; then
-        printf "%s %s %s" $bn_s $bn_dt $bn_m
+        printf "%s %s %s" $hritu $din $mas
     elif [ $dt_f -eq 4 ]; then
-        printf "%s %s %s %s" $bn_s $bn_dt $bn_m "$(bongabdo)"
+        printf "%s %s %s %s" $hritu $din $mas "$(bongabdo)"
     else
-        printf "%s %s %s %s %s" $bn_s "$(bar)" $bn_dt $bn_m "$(bongabdo)"
+        printf "%s %s %s %s %s" $hritu $bar $din $mas "$(bongabdo)"
     fi
 
 }
