@@ -1,15 +1,16 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 #  Credit To https://www.shawonruet.com/2016/03/english-to-bangla-date-converter-c.html
 # According to Bangla Academy 2019 revision Boishakh-Aashwin will be 31days, Kartik-Choitra ( except Falgun ) will be 30days, Falgun will be 29days(30days in the leap year)
 # Bangla date count starts with the rising of the sun. So date is corrected to change at 6 in morning with GMT.
 
 
-while getopts ":d:m:y:h" o; do case "${o}" in
+while getopts ":d:m:y:f:h" o; do case "${o}" in
 	h) printf "Optional arguments for custom use:\\n  -d: Date\\n  -m: Month\\n  -y: Year\\n  -h: Show this help message\\n" && exit 1 ;;
 	d) en_dt=${OPTARG} ;;
 	m) en_m=${OPTARG} ;;
 	y) en_y=${OPTARG} ;;
+	f) dt_f=${OPTARG} ;;
 	*) printf "Invalid option: -%s\\n" "$OPTARG" && exit 1 ;;
 esac done
 
@@ -17,9 +18,41 @@ esac done
 [ -z $en_dt ] && en_dt=$(TZ='Europe/London' date +"%d")
 [ -z $en_m ] && en_m=$(date +%m | sed 's/^0//g' )
 [ -z $en_y ] && en_y=$(date +%Y)
-lp_y=$(( $en_y % 4 ))
-en_day=$(date +%a)
+[ -z $dt_f ] && dt_f="0"
 
+lp_y=$(( $en_y % 4 ))
+en_d=$(date +%u)
+
+bar() {
+    if [ $en_d -eq 1 ]; then
+        bn_d="Som"
+    fi
+
+    if [ $en_d -eq 2 ]; then
+        bn_d="Mongol"
+    fi
+
+    if [ $en_d -eq 3 ]; then
+        bn_d="Budh"
+    fi
+
+    if [ $en_d -eq 4 ]; then
+        bn_d="Brihospoti"
+    fi
+
+    if [ $en_d -eq 5 ]; then
+        bn_d="Shukro"
+    fi
+
+    if [ $en_d -eq 6 ]; then
+        bn_d="Shoni"
+    fi
+
+    if [ $en_d -eq 7 ]; then
+        bn_d="Robi"
+    fi
+    printf "%s" $bn_d
+}
 
 bongabdo() {
     if [ $en_m -eq 4 ]; then
@@ -37,7 +70,7 @@ bongabdo() {
     printf "%s" "$bn_y"
 }
 
-bn_m_s_dt() {
+tariq() {
     if [ $en_m -eq 4 ]; then
         if [ $en_dt -lt 14 ]; then
             bn_mn=12
@@ -212,7 +245,19 @@ bn_m_s_dt() {
             bn_dt=$(( $en_dt - 15 + 1 ))
         fi
     fi
-    printf "%s %s %s" $bn_s $bn_dt $bn_m
+
+    if [ $dt_f -eq 1 ]; then
+         printf "%s %s %s" "$(bar)",$bn_dt $bn_m
+    elif [ $dt_f -eq 2 ]; then
+        printf "%s %s %s %s" "$(bar)",$bn_dt $bn_m "$(bongabdo)"
+    elif [ $dt_f -eq 3 ]; then
+        printf "%s %s %s" $bn_s $bn_dt $bn_m
+    elif [ $dt_f -eq 4 ]; then
+        printf "%s %s %s %s" $bn_s $bn_dt $bn_m "$(bongabdo)"
+    else
+        printf "%s %s %s %s %s" $bn_s "$(bar)" $bn_dt $bn_m "$(bongabdo)"
+    fi
+
 }
 
-printf "%s %s" "$(bn_m_s_dt)" "$(bongabdo)"
+printf "%s %s" "$(tariq)"

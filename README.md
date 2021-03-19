@@ -6,7 +6,7 @@ Installation and Usage:
 ------
 'git clone https://github.com/imrufbd/bangla-calendar.git'
 
-### cd into directory and give permission
+### cd into directory and give permission or put bncal in your path
 
 #### help:
 ```
@@ -23,4 +23,12 @@ bncal
 bncal -d 21 -m 2 -y 1952
 ```
 
-or put bncal in your path
+#### Date Format ( use -f)
+```
+bncal -d 14 -m 2 -f 3 
+```
+    - Default format: Hritu Bar Tariq Mas Bongabdo
+    - 1 : Bar, Tariq Mas
+    - 2 : Bar, Tariq Mas Bongabdo
+    - 3 : Hritu Tariq Mas
+    - 4 : Hritu Tariq Mas Bongabdo
