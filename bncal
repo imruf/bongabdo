@@ -13,6 +13,7 @@ while getopts ":d:m:y:f:h;t" o; do case "${o}" in
 	*) printf "Invalid option: -%s\\n" "$OPTARG" && exit 1 ;;
 esac done
 
+
 # [ -z $en_dt ] && en_dt=$(date +%d)
 [ -z $en_dt ] && en_dt=$(TZ='Europe/London' date +"%d")
 [ -z $en_m ] && en_m=$(date +%m | sed 's/^0//g' )
@@ -23,8 +24,8 @@ lp_y=$(( $en_y % 4 ))
 en_d=$(date --date=$en_y-$en_m-$en_dt +%u)
 # en_d=$(date +%u)
 
-# text in bangla or bangla/bangreji
-# comment uncomment bangreji bangla block of lines for bangla/bangreji
+# text in bangla
+# comment uncomment bangreji/bangla block of lines for bangla/bangreji
 
 obdo() {
     if [ $en_m -eq 4 ]; then
