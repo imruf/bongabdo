@@ -8,7 +8,7 @@
     - A shell script to convert Gregorian calendar into Bongabdo
 
 #### ব্যবহারবিধি:
-	- 'git clone https://github.com/imrufbd/bangla-calendar.git'
+	- 'git clone https://github.com/imruf/bangla-calendar.git'
 	-  cd into directory and give permission or put bncal in your path.
 
 #### সাহায্য:
