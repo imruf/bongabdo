@@ -23,8 +23,8 @@ lp_y=$(( $en_y % 4 ))
 en_d=$(date --date=$en_y-$en_m-$en_dt +%u)
 # en_d=$(date +%u)
 
-# text in bangla or bangreji/english
-# comment uncomment bangreji bangla block of lines for bangreji/english.
+# text in bangla or bangla/bangreji
+# comment uncomment bangreji bangla block of lines for bangla/bangreji
 
 obdo() {
     if [ $en_m -eq 4 ]; then
