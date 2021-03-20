@@ -1,34 +1,36 @@
-Bangla Calendar
----------------
-    A shell script convert Gregorian calendar into Bongabdo
+বঙ্গাব্দ / Bongabdo
+--------------
 
-Installation and Usage:
-------
-'git clone https://github.com/imrufbd/bangla-calendar.git'
+#### বাংলা পঞ্জিকা
+	- ইংরেজি তারিখ বাংলায় রুপান্তরের স্ক্রীপ্ট।
+	
+#### Bangla Calendar
+    - A shell script to convert Gregorian calendar into Bongabdo
 
-### cd into directory and give permission or put bncal in your path
+#### ব্যবহারবিধি:
+	- 'git clone https://github.com/imrufbd/bangla-calendar.git'
+	-  cd into directory and give permission or put bncal in your path.
 
-#### help:
+#### সাহায্য:
 ```
 bncal -h
 ```
 
-#### Bangla date today:
+#### আজকের দিনের বাংলা তারিখ:
 ```
 bncal
 ```
-
-#### Bangla date on a given date eg. 21 Feb 1952
+#### কোন একটি নির্দিষ্ট দিনে বাংলা তারিখ ( যেমন: ২১ ফেব্রুয়ারি ১৯৫২ )
 ```
 bncal -d 21 -m 2 -y 1952
 ```
 
-#### Date Format ( use -f)
+#### তারিখ প্রদর্শনের রুপ ( -f ):
 ```
 bncal -d 14 -m 2 -f 3 
 ```
-    - Default format: Hritu Bar Tariq Mas Bongabdo
-    - 1 : Bar, Tariq Mas
-    - 2 : Bar, Tariq Mas Bongabdo
-    - 3 : Hritu Tariq Mas
-    - 4 : Hritu Tariq Mas Bongabdo
+	- স্বাভাবিক প্রদর্শন: ঋতু বার তারিখ মাস সন
+    	- 1 : বার, তারিখ মাস
+    	- 2 : বার, তারিখ মাস সন
+    	- 3 : ঋতু তারিখ মাস
+    	- 4 : ঋতু তারিখ মাস সন
