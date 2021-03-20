@@ -1,12 +1,11 @@
 #!/bin/bash
 
-#  Credit To https://www.shawonruet.com/2016/03/english-to-bangla-date-converter-c.html
+# Credit To https://www.shawonruet.com/2016/03/english-to-bangla-date-converter-c.html
 # According to Bangla Academy 2019 revision Boishakh-Aashwin will be 31days, Kartik-Choitra ( except Falgun ) will be 30days, Falgun will be 29days(30days in the leap year)
-# Bangla date count starts with the rising of the sun. So date is corrected to change at 6 in morning with GMT. If date doesn't change accordingly uncomment line 17  and comment 18.
+# Bangla date count starts with the rising of the sun. So date is corrected to change at 6 in the morning with GMT. If date doesn't change accordingly uncomment line 17  and comment 18.
 
-
-while getopts ":d:m:y:f:h" o; do case "${o}" in
-	h) printf "Optional arguments for custom use:\\n  -d: Date\\n  -m: Month\\n  -y: Year\\n -f: Date Format\\n -h: Show this help message\\n" && exit 1 ;;
+while getopts ":d:m:y:f:h;t" o; do case "${o}" in
+    h) printf "Optional arguments for custom use:\\n -d: Date\\n -m: Month\\n -y: Year\\n -f: Date Format\\n -h: Show this help message\\n" && exit 1 ;;
 	d) en_dt=${OPTARG} ;;
 	m) en_m=${OPTARG} ;;
 	y) en_y=${OPTARG} ;;
@@ -25,21 +24,9 @@ en_d=$(date --date=$en_y-$en_m-$en_dt +%u)
 # en_d=$(date +%u)
 
 # text in bangla or bangreji/english
-# comment uncomment bday bdate bmo bsn din function for bangreji/english.
+# comment uncomment bangreji bangla block of lines for bangreji/english.
 
-bday=( [1]='সোম' [2]='মঙ্গল' [3]='বুধ' [4]='বৃহঃ' [5]='শুক্র' [6]='শনি' [7]='রবি' )
-# bday=( [1]='Som' [2]='Mongol' [3]='Budh' [4]='Briho' [5]='Shukro' [6]='Shoni' [7]='Robi' )
-
-bdate=( [1]='১' [2]='২' [3]='৩' [4]='৪' [5]='৫' [6]='৬' [7]='৭' [8]='৮' [9]='৯' [10]='১০' [11]='১১' [12]='১২' [13]='১৩' [14]='১৪' [15]='১৫' [16]='১৬' [17]='১৭' [18]='১৮' [19]='১৯' [20]='২০' [21]='২১' [22]='২২' [23]='২৩' [24]='২৪' [25]='২৫' [26]='২৬' [27]='২৭' [28]='২৮' [29]='২৯' [30]='৩০' [31]='৩১'] )
-
-bmo=( [1]='বৈশাখ' [2]='জৈষ্ঠ্য' [3]='আষাঢ়' [4]='শ্রাবণ' [5]='ভাদ্র' [6]='আশ্বিন' [7]='কার্তিক' [8]='অগ্রাহায়ণ' [9]='পৌষ' [10]='মাঘ' [11]='ফাল্গুন' [12]='চৈত্র' )
-# bmo=( [1]='Boishakh' [2]='Jaistha' [3]='Aashar' [4]='Srabon' [5]='Vhadra' [6]='Aashwin' [7]='Kartik' [8]='Agrahayon' [9]='Poush' [10]='Magh' [11]='Falgun' [12]='Chaitra' )
-
-bsn=( [1]='গ্রীষ্ম' [2]='বর্ষা' [3]='শরৎ' [4]='হেমন্ত' [5]='শীত' [6]='বসন্ত' )
-# bsn=( [1]='Grishsho' [2]='Borsha' [3]='Sharot' [4]='Hemanta' [5]='Sheet' [6]='Basanta' )
-
-
-bongabdo() {
+obdo() {
     if [ $en_m -eq 4 ]; then
         if [ $en_dt -le 13 ]; then
         bn_y=$(( $en_y - 594 ))
@@ -52,13 +39,13 @@ bongabdo() {
     elif [ $en_m -gt 4 ]; then
         bn_y=$(( $en_y - 593 ))
     fi
-    printf "%s" "$bn_y"
+    printf "%s" $bn_y
 }
 
-tariq() {
+bongabdo() {
     if [ $en_m -eq 4 ]; then
         if [ $en_dt -lt 14 ]; then
-            bn_m=12
+            bn_m=c
             bn_s=6
             bn_dt=$(( $en_dt + 14 + 3 ))
         elif [ $en_dt -ge 14 ]; then
@@ -170,7 +157,7 @@ tariq() {
             bn_s=5
             bn_dt=$(( $en_dt + 13 + 3 ))
         elif [ $en_dt -ge 15 ]; then
-            bn_m=10
+            bn_m=m
             bn_s=5
             bn_dt=$(( $en_dt - 15 + 1 ))
         fi
@@ -178,11 +165,11 @@ tariq() {
 
     if [ $en_m -eq 2 ]; then
         if [ $en_dt -lt 14 ]; then
-            bn_m=10
+            bn_m=m
             bn_s=5
             bn_dt=$(( $en_dt + 12 + 5 ))
         elif [ $en_dt -ge 14 ]; then
-            bn_m=11
+            bn_m=f
             bn_s=6
             bn_dt=$(( $en_dt - 14 + 1 ))
         fi
@@ -191,39 +178,48 @@ tariq() {
     if [ $en_m -eq 3 ]; then
         if [ $en_dt -lt 15 ]; then
             if [ $lp_y -ne 0 ]; then
-                bn_m=11
+                bn_m=f
                 bn_s=6
                 bn_dt=$(( $en_dt + 15 ))
             else
-                bn_m=11
+                bn_m=f
                 bn_s=6
                 bn_dt=$(( $en_dt + 15 + 1 ))
             fi
         elif [ $en_dt -ge 15 ]; then
-            bn_m=12
+            bn_m=c
             bn_s=6
             bn_dt=$(( $en_dt - 15 + 1 ))
         fi
     fi
 
-        bar=${bday[$en_d]}
-		din=${bdate[$bn_dt]}
-		# din=$bn_dt
-		mas=${bmo[$bn_m]}
-        hritu=${bsn[$bn_s]}
+# bangreji
+        # din=$(printf "%s" $en_d | sed 's/1/Som/;s/2/Mongol/;s/3/Budh/;s/4/Briho/;s/5/Shukro/;s/6/Shoni/;s/7/Robi/')
+        # tariq=$bn_dt
+        # mas=$(printf "%s" $bn_m | sed 's/1/Boishakh/;s/2/Jaishtha/;s/3/Aashar/;s/4/Srabon/;s/5/Vhadra/;s/6/Aashwin/;s/7/Kartik/;s/8/Aagrahayon/;s/9/Poush/;s/m/Magh/;s/f/Falgun/;s/c/Chaitra/')
+        # sal="$(obdo)"
+        # hritu=$(printf "%s" $bn_s | sed 's/1/Grishsho/;s/2/Borsha/;s/3/Sharot/;s/4/Hemanta/;s/5/Sheet/;s/6/Bosonto/')
+
+# bangla
+        din=$(printf "%s" $en_d | sed 's/1/সোম/;s/2/মঙ্গল/;s/3/বুধ/;s/4/বৃহঃ/;s/5/শুক্র/;s/6/শনি/;s/7/রবি/')
+        tariq=$(printf "%s" $bn_dt | sed 's/1/১/;s/2/২/;s/3/৩/;s/4/৪/;s/5/৫/;s/6/৬/;s/7/৭/;s/8/৮/;s/9/৯/;s/0/০/')
+        mas=$(printf "%s" $bn_m | sed 's/1/বৈশাখ/;s/2/জ্যৈষ্ঠ/;s/3/আষাঢ়/;s/4/শ্রাবণ/;s/5/ভাদ্র/;s/6/আশ্বিন/;s/7/কার্তিক/;s/8/অগ্রহায়ণ/;s/9/পৌষ/;s/m/মাঘ/;s/f/ফাল্গুন/;s/c/চৈত্র/')
+        sal=$(printf "%s" "$(obdo)" | sed 's/1/১/;s/2/২/;s/3/৩/;s/4/৪/;s/5/৫/;s/6/৬/;s/7/৭/;s/8/৮/;s/9/৯/;s/0/০/')
+        hritu=$(printf "%s" $bn_s | sed 's/1/গ্রীষ্ম/;s/2/বর্ষা/;s/3/শরৎ/;s/4/হেমন্ত/;s/5/শীত/;s/6/বসন্ত/')
+
 
     if [ $dt_f -eq 1 ]; then
-         printf "%s %s %s" $bar,$din $mas
+         printf "%s %s %s" $din,$tariq $mas
     elif [ $dt_f -eq 2 ]; then
-        printf "%s %s %s %s" $bar,$din $mas "$(bongabdo)"
+        printf "%s %s %s %s" $din,$tariq $mas $sal
     elif [ $dt_f -eq 3 ]; then
-        printf "%s %s %s" $hritu $din $mas
+        printf "%s %s %s" $hritu $tariq $mas
     elif [ $dt_f -eq 4 ]; then
-        printf "%s %s %s %s" $hritu $din $mas "$(bongabdo)"
+        printf "%s %s %s %s" $hritu $tariq $mas $sal
     else
-        printf "%s %s %s %s %s" $hritu $bar $din $mas "$(bongabdo)"
+        printf "%s %s %s %s %s" $hritu $din $tariq $mas $sal
     fi
 
 }
 
-printf "%s" "$(tariq)"
+printf "%s" "$(bongabdo)"
