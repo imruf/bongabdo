@@ -7,25 +7,25 @@
 #### Bangla Calendar
     - A shell script to convert Gregorian calendar into Bongabdo
 
-#### ব্যবহারবিধি:
+###### ব্যবহারবিধি:
 	- 'git clone https://github.com/imruf/bangla-calendar.git'
 	-  cd into directory and give permission or put bncal in your path.
 
-#### সাহায্য:
+###### সাহায্য:
 ```
 bncal -h
 ```
 
-#### আজকের দিনের বাংলা তারিখ:
+###### আজকের দিনের বাংলা তারিখ:
 ```
 bncal
 ```
-#### কোন একটি নির্দিষ্ট দিনে বাংলা তারিখ ( যেমন: ২১ ফেব্রুয়ারি ১৯৫২ )
+###### কোন একটি নির্দিষ্ট দিনে বাংলা তারিখ ( যেমন: ২১ ফেব্রুয়ারি ১৯৫২ )
 ```
 bncal -d 21 -m 2 -y 1952
 ```
 
-#### তারিখ প্রদর্শনের রুপ ( -f ):
+###### তারিখ প্রদর্শনের রুপ ( -f ):
 ```
 bncal -d 14 -m 2 -f 3 
 ```
