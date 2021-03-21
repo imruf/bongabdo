@@ -1,5 +1,6 @@
-বঙ্গাব্দ / Bongabdo
---------------
+বঙ্গাব্দ  
+----
+	[Bongabdo](https://github.com/imruf/bongabdo.git)
 
 ###### বাংলা পঞ্জিকা
 	- ইংরেজি তারিখ বাংলায় রুপান্তরের স্ক্রীপ্ট।
@@ -8,8 +9,8 @@
     - A shell script to convert Gregorian calendar into Bongabdo
 
 ###### ব্যবহারবিধি:
-	- git clone https://github.com/imruf/bangla-calendar.git
-	-  cd into directory and give permission or put bncal in your path.
+	- 'git clone https://github.com/imruf/bongabdo.git'
+	- cd into directory and give permission or put bncal in your path.
 
 ###### সাহায্য:
 ```
