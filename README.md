@@ -1,6 +1,5 @@
-বঙ্গাব্দ  
-----
-	[Bongabdo](https://github.com/imruf/bongabdo.git)
+বঙ্গাব্দ  [Bongabdo](https://github.com/imruf/bongabdo.git)
+------
 
 ###### বাংলা পঞ্জিকা
 	- ইংরেজি তারিখ বাংলায় রুপান্তরের স্ক্রীপ্ট।
