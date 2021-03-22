@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Credit To https://www.shawonruet.com/2016/03/english-to-bangla-date-converter-c.html
 # According to Bangla Academy 2019 revision Boishakh-Aashwin will be 31days, Kartik-Choitra ( except Falgun ) will be 30days, Falgun will be 29days(30days in the leap year)
@@ -197,26 +197,26 @@ bongabdo() {
         din=$(printf "%s" $en_d | sed 's/1/Som/;s/2/Mongol/;s/3/Budh/;s/4/Briho/;s/5/Shukro/;s/6/Shoni/;s/7/Robi/')
         tariq=$bn_dt
         mas=$(printf "%s" $bn_m | sed 's/1/Boishakh/;s/2/Jaishtha/;s/3/Aashar/;s/4/Srabon/;s/5/Vhadra/;s/6/Aashwin/;s/7/Kartik/;s/8/Aagrahayon/;s/9/Poush/;s/m/Magh/;s/f/Falgun/;s/c/Chaitra/')
-        sal="$(obdo)"
+        son="$(obdo)"
         hritu=$(printf "%s" $bn_s | sed 's/1/Grishsho/;s/2/Borsha/;s/3/Sharot/;s/4/Hemanta/;s/5/Sheet/;s/6/Bosonto/')
     else
         din=$(printf "%s" $en_d | sed 's/1/সোম/;s/2/মঙ্গল/;s/3/বুধ/;s/4/বৃহঃ/;s/5/শুক্র/;s/6/শনি/;s/7/রবি/')
         tariq=$(printf "%s" $bn_dt | sed 's/1/১/;s/2/২/;s/3/৩/;s/4/৪/;s/5/৫/;s/6/৬/;s/7/৭/;s/8/৮/;s/9/৯/;s/0/০/')
         mas=$(printf "%s" $bn_m | sed 's/1/বৈশাখ/;s/2/জ্যৈষ্ঠ/;s/3/আষাঢ়/;s/4/শ্রাবণ/;s/5/ভাদ্র/;s/6/আশ্বিন/;s/7/কার্তিক/;s/8/অগ্রহায়ণ/;s/9/পৌষ/;s/m/মাঘ/;s/f/ফাল্গুন/;s/c/চৈত্র/')
-        sal=$(printf "%s" "$(obdo)" | sed 's/1/১/;s/2/২/;s/3/৩/;s/4/৪/;s/5/৫/;s/6/৬/;s/7/৭/;s/8/৮/;s/9/৯/;s/0/০/')
+        son=$(printf "%s" "$(obdo)" | sed 's/1/১/;s/2/২/;s/3/৩/;s/4/৪/;s/5/৫/;s/6/৬/;s/7/৭/;s/8/৮/;s/9/৯/;s/0/০/')
         hritu=$(printf "%s" $bn_s | sed 's/1/গ্রীষ্ম/;s/2/বর্ষা/;s/3/শরৎ/;s/4/হেমন্ত/;s/5/শীত/;s/6/বসন্ত/')
     fi
 
     if [ $dt_f -eq 1 ]; then
          printf "%s %s %s" $din,$tariq $mas
     elif [ $dt_f -eq 2 ]; then
-        printf "%s %s %s %s" $din,$tariq $mas $sal
+        printf "%s %s %s %s" $din,$tariq $mas $son
     elif [ $dt_f -eq 3 ]; then
         printf "%s %s %s" $hritu $tariq $mas
     elif [ $dt_f -eq 4 ]; then
-        printf "%s %s %s %s" $hritu $tariq $mas $sal
+        printf "%s %s %s %s" $hritu $tariq $mas $son
     else
-        printf "%s %s %s %s %s" $hritu $din $tariq $mas $sal
+        printf "%s %s %s %s %s" $hritu $din $tariq $mas $son
     fi
 
 }
