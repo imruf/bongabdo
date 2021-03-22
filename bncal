@@ -4,7 +4,7 @@
 # According to Bangla Academy 2019 revision Boishakh-Aashwin will be 31days, Kartik-Choitra ( except Falgun ) will be 30days, Falgun will be 29days(30days in the leap year)
 # Bangla date count starts with the rising of the sun. So date is corrected to change at 6 in the morning with GMT. If date doesn't change accordingly uncomment line 17  and comment 18.
 
-while getopts ":d:m:y:f:h;t" o; do case "${o}" in
+while getopts ":d:m:y:f:h" o; do case "${o}" in
     h) printf "Optional arguments for custom use:\\n -d: Date\\n -m: Month\\n -y: Year\\n -f: Date Format\\n -h: Show this help message\\n" && exit 1 ;;
 	d) en_dt=${OPTARG} ;;
 	m) en_m=${OPTARG} ;;
