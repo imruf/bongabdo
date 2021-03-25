@@ -24,7 +24,7 @@ lp_y=$(( $en_y % 4 ))
 en_d=$(date --date=$en_y-$en_m-$en_dt +%u)
 # en_d=$(date +%u)
 
-obdo() {
+bongabdo() {
     if [ $en_m -eq 4 ]; then
         if [ $en_dt -le 13 ]; then
         bn_y=$(( $en_y - 594 ))
@@ -37,10 +37,7 @@ obdo() {
     elif [ $en_m -gt 4 ]; then
         bn_y=$(( $en_y - 593 ))
     fi
-    printf "%s" $bn_y
-}
 
-bongabdo() {
     if [ $en_m -eq 4 ]; then
         if [ $en_dt -lt 14 ]; then
             bn_m=c
@@ -195,13 +192,13 @@ bongabdo() {
         din=$(printf "%s" $en_d | sed 's/1/Som/;s/2/Mongol/;s/3/Budh/;s/4/Briho/;s/5/Shukro/;s/6/Shoni/;s/7/Robi/')
         tariq=$bn_dt
         mas=$(printf "%s" $bn_m | sed 's/1/Boishakh/;s/2/Jaishtha/;s/3/Aashar/;s/4/Srabon/;s/5/Vhadra/;s/6/Aashwin/;s/7/Kartik/;s/8/Aagrahayon/;s/9/Poush/;s/m/Magh/;s/f/Falgun/;s/c/Chaitra/')
-        son="$(obdo)"
+        son=$bn_y
         hritu=$(printf "%s" $bn_s | sed 's/1/Grishsho/;s/2/Borsha/;s/3/Sharot/;s/4/Hemanta/;s/5/Sheet/;s/6/Bosonto/')
     else
         din=$(printf "%s" $en_d | sed 's/1/সোম/;s/2/মঙ্গল/;s/3/বুধ/;s/4/বৃহঃ/;s/5/শুক্র/;s/6/শনি/;s/7/রবি/')
-        tariq=$(printf "%s" $bn_dt | sed 's/1/১/;s/2/২/;s/3/৩/;s/4/৪/;s/5/৫/;s/6/৬/;s/7/৭/;s/8/৮/;s/9/৯/;s/0/০/')
+        tariq=$(printf "%s" $bn_dt | sed 's/1/১/g;s/2/২/g;s/3/৩/g;s/4/৪/g;s/5/৫/g;s/6/৬/g;s/7/৭/g;s/8/৮/g;s/9/৯/g;s/0/০/g')
         mas=$(printf "%s" $bn_m | sed 's/1/বৈশাখ/;s/2/জ্যৈষ্ঠ/;s/3/আষাঢ়/;s/4/শ্রাবণ/;s/5/ভাদ্র/;s/6/আশ্বিন/;s/7/কার্তিক/;s/8/অগ্রহায়ণ/;s/9/পৌষ/;s/m/মাঘ/;s/f/ফাল্গুন/;s/c/চৈত্র/')
-        son=$(printf "%s" "$(obdo)" | sed 's/1/১/;s/2/২/;s/3/৩/;s/4/৪/;s/5/৫/;s/6/৬/;s/7/৭/;s/8/৮/;s/9/৯/;s/0/০/')
+        son=$(printf "%s" $bn_y | sed 's/1/১/g;s/2/২/g;s/3/৩/g;s/4/৪/g;s/5/৫/g;s/6/৬/g;s/7/৭/g;s/8/৮/g;s/9/৯/g;s/0/০/g')
         hritu=$(printf "%s" $bn_s | sed 's/1/গ্রীষ্ম/;s/2/বর্ষা/;s/3/শরৎ/;s/4/হেমন্ত/;s/5/শীত/;s/6/বসন্ত/')
     fi
 
