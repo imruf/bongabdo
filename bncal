@@ -216,4 +216,4 @@ bongabdo() {
 
 }
 
-printf "%s" "$(bongabdo)"
+printf "%s\n" "$(bongabdo)"
