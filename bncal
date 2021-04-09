@@ -3,7 +3,7 @@
 # Bangla date count starts with the rising of the sun. So date is corrected to change at 6 in the morning with GMT. If date doesn't change accordingly uncomment line 16  and comment 17.
 
 while getopts "ed:m:y:f:h" o; do case "${o}" in
-    h) printf "Optional arguments for custom use:\\n -d: Date\\n -m: Month\\n -y: Year\\n -f: Date Format\\n -e: Text Format(Bangreji)\\n -h: Show this help message\\n" && exit 1 ;;
+    h) printf "bncal\\n -d: Date\\n -m: Month\\n -y: Year\\n -f: Date Format\\n -e: Text Format(Bangreji)\\n -h: help\\n" && exit 1 ;;
 	d) en_dt=${OPTARG} ;;
 	m) en_m=${OPTARG} ;;
 	y) en_y=${OPTARG} ;;
@@ -12,10 +12,9 @@ while getopts "ed:m:y:f:h" o; do case "${o}" in
 	*) printf "Invalid option: -%s\\n" "$OPTARG" && exit 1 ;;
 esac done
 
-
-# [ -z $en_dt ] && en_dt=$(date +%d)
-[ -z $en_dt ] && en_dt=$(TZ='Europe/London' date +"%d")
-[ -z $en_m ] && en_m=$(date +%m | sed 's/^0//g' )
+# [ -z $en_dt ] && en_dt=$(date +%d | sed 's/^0//g')
+[ -z $en_dt ] && en_dt=$(TZ='Europe/London' date +"%d" | sed 's/^0//g')
+[ -z $en_m ] && en_m=$(date +%m | sed 's/^0//g')
 [ -z $en_y ] && en_y=$(date +%Y)
 [ -z $dt_f ] && dt_f="0"
 
@@ -212,7 +211,6 @@ bongabdo() {
     else
         printf "%s %s %s %s %s" $hritu $din $tariq $mas $son
     fi
-
 }
 
 printf "%s\n" "$(bongabdo)"
