@@ -208,6 +208,8 @@ bongabdo() {
         printf "%s %s %s" $hritu $tariq $mas
     elif [ $dt_f -eq 4 ]; then
         printf "%s %s %s %s" $hritu $tariq $mas $son
+    elif [ $dt_f -eq 5 ]; then
+        printf "%s %s" $mas $tariq
     else
         printf "%s %s %s %s %s" $hritu $din $tariq $mas $son
     fi
