@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 # Bangla date count starts with the rising of the sun. So date is corrected to change at 6 in the morning with GMT. If date doesn't change accordingly uncomment line 16  and comment 17.
 
@@ -21,6 +21,7 @@ esac done
 lp_y=$(( $en_y % 4 ))
 en_d=$(date --date=$en_y-$en_m-$en_dt +%u)
 # en_d=$(date +%u)
+
 
 bongabdo() {
     if [ $en_m -eq 4 ]; then
@@ -201,15 +202,15 @@ bongabdo() {
     fi
 
     if [ $dt_f -eq 1 ]; then
-         printf "%s %s %s" $din,$tariq $mas
+         printf "%s %s %s" $din $tariq $mas
     elif [ $dt_f -eq 2 ]; then
-        printf "%s %s %s %s" $din,$tariq $mas $son
+        printf "%s %s %s %s" $din $tariq $mas $son
     elif [ $dt_f -eq 3 ]; then
         printf "%s %s %s" $hritu $tariq $mas
     elif [ $dt_f -eq 4 ]; then
         printf "%s %s %s %s" $hritu $tariq $mas $son
     elif [ $dt_f -eq 5 ]; then
-        printf "%s %s" $mas $tariq
+        printf "%s %s" "$tariq "$mas
     else
         printf "%s %s %s %s %s" $hritu $din $tariq $mas $son
     fi
