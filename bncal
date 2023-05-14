@@ -138,7 +138,7 @@ bongabdo() {
             bn_m=8
             bn_s=4
             bn_dt=$(( $en_dt + 14 + 1 ))
-        elif [ $en_dt -ge 15 ]; then
+        elif [ $en_dt -ge 16 ]; then
             bn_m=9
             bn_s=5
             bn_dt=$(( $en_dt - 16 + 1 ))
