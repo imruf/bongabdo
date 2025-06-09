@@ -193,17 +193,17 @@ bongabdo() {
     fi
 
     if [ $dt_f -eq 1 ]; then
-         printf "%s %s %s" $din $tariq $mas
+         printf "%s %s %s\n" $din $tariq $mas
     elif [ $dt_f -eq 2 ]; then
-        printf "%s %s %s %s" $din $tariq $mas $son
+        printf "%s %s %s %s\n" $din $tariq $mas $son
     elif [ $dt_f -eq 3 ]; then
-        printf "%s %s %s" $hritu $tariq $mas
+        printf "%s %s %s\n" $hritu $tariq $mas
     elif [ $dt_f -eq 4 ]; then
-        printf "%s %s %s %s" $hritu $tariq $mas $son
+        printf "%s %s %s %s\n" $hritu $tariq $mas $son
     elif [ $dt_f -eq 5 ]; then
-        printf "%s %s" "$tariq "$mas
+        printf "%s %s\n" "$tariq "$mas
     else
-        printf "%s %s %s %s %s" $hritu $din $tariq $mas $son
+        printf "%s %s %s %s %s\n" $hritu $din $tariq $mas $son
     fi
 }
 
@@ -377,7 +377,18 @@ engabdo() {
         mas=$(printf "%s" $en_m | sed 's/1/January/;s/2/February/;s/3/March/;s/4/April/;s/5/May/;s/6/June/;s/7/July/;s/8/August/;s/9/September/;s/o/October/;s/n/November/;s/d/December/')
         son=$en_y
     fi
-        printf "%s %s %s %s" $din $tariq $mas $son
+
+    if [ $dt_f -eq 1 ]; then
+         printf "%s %s %s\n" $din $tariq $mas
+    elif [ $dt_f -eq 2 ]; then
+        printf "%s %s %s %s\n" $din $tariq $mas $son
+    elif [ $dt_f -eq 3 ]; then
+        printf "%s %s %s\n" $tariq $mas $son
+    elif [ $dt_f -eq 4 ]; then
+        printf "%s %s\n" "$tariq "$mas
+    else
+        printf "%s %s %s %s %s\n" $din $tariq $mas $son
+    fi
 }
 
 
